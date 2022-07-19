@@ -17,7 +17,7 @@ async def echo_send(message: types.message):
         answer = pages("adidas")[0][0]
         await bot.send_message(message.from_user.id, answer)
     else:
-        answer = "Напиши 'скидки'"
+        answer = 'Send "sales"'
         await bot.send_message(message.from_user.id, answer)
 
 
