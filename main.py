@@ -32,13 +32,12 @@ def get_links(url) -> list:
     return list_of_links
 
 
-def pages() -> list:
+def pages(brand_input) -> list:
     """
     :return: list of pages
     """
-    searched_brand = input("Введите название бренда кроссовок: ")
     try:
-        result_brand = brands_info()[searched_brand]
+        result_brand = brands_info()[brand_input]
     except Exception:
         print("Такого нет!")
 
@@ -54,5 +53,3 @@ def pages() -> list:
             pass
 
     return list_of_pages
-
-print(pages())
