@@ -1,7 +1,7 @@
 import requests
 
 
-def brands_info():
+def brands_info() -> dict:
     """
         :return: a dictionary that contains
         brand name as 'key' and brand id as 'value'
