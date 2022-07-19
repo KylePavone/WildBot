@@ -13,26 +13,24 @@ def brands_info():
         brands["brand_id"] = i["brandId"]
         lst.append(brands)
 
-    brand_set = []
+    brand_list = []
     for item in lst:
         br = item["brand"]
-        brand_set.append(br)
+        brand_list.append(br)
         br_id = item["brand_id"]
-        brand_set.append(br_id)
+        brand_list.append(br_id)
 
-    new_brand_set = []
-    for i in brand_set:
-        if i not in new_brand_set:
-            new_brand_set.append(i)
+    new_brand_list = []
+    for i in brand_list:
+        if i not in new_brand_list:
+            new_brand_list.append(i)
+    brand = []
+    brand_id = []
+    for i in new_brand_list:
+        if type(i) == str:
+            brand.append(i)
+        elif type(i) == int:
+            brand_id.append(i)
 
-    conclusion_list = []
-    for i in range(len(new_brand_set)):
-        brand_info = dict()
-        if type(new_brand_set[i]) is str:
-            brand_info["brand"] = new_brand_set[i]
-        else:
-            brand_info["brand_id"] = new_brand_set[i]
-
-        conclusion_list.append(brand_info)
-
-    return conclusion_list
+    result_dict_of_brands = dict(zip(brand, brand_id))
+    return result_dict_of_brands
