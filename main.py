@@ -2,7 +2,11 @@ import requests
 from brands_info import brands_info
 
 
-def get_links(url):
+def get_links(url) -> list:
+    """
+        :param url: string
+        :return: list of products links
+    """
     response = requests.get(url).json()
     data = response["data"]
     products = data["products"]
@@ -28,7 +32,10 @@ def get_links(url):
     return list_of_links
 
 
-def pages():
+def pages() -> list:
+    """
+    :return: list of pages
+    """
     searched_brand = input("Введите название бренда кроссовок: ")
     try:
         result_brand = brands_info()[searched_brand]
@@ -36,6 +43,7 @@ def pages():
         print("Такого нет!")
 
     list_of_pages = []
+
     try:
         for i in range(1, 10):
             page = get_links(f"https://catalog.wb.ru/catalog/men_shoes/catalog?appType=1&couponsGeo=12,3,18,15,21&curr=rub&dest=-1029256,-102269,-2162196,-1257786&emp=0&fbrand={result_brand}&kind=1&lang=ru&locale=ru&page={i}&pricemarginCoeff=1.0&reg=0&regions=68,64,83,4,38,80,33,70,82,86,75,30,69,22,66,31,40,1,48,71&sort=popular&spp=0&subject=104;105;128;130;232;396;1382;1586")
@@ -44,7 +52,7 @@ def pages():
             continue
     except UnboundLocalError:
             pass
+
     return list_of_pages
 
-print(len(pages()))
-
+print(pages())
