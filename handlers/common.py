@@ -2,11 +2,11 @@ from aiogram import types
 from aiogram import Dispatcher
 
 from bot_creation import bot
-from bot_creation import dp
+from keyboards import common_keyboard
 
 
 async def start_command(message: types.Message):
-    await bot.send_message(message.from_user.id, "I'm bot-searcher")
+    await bot.send_message(message.from_user.id, "I'm bot-searcher", reply_markup=common_keyboard)
     await message.delete()
 
 
