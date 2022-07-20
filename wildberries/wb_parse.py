@@ -1,7 +1,6 @@
 import fake_useragent
 import requests
 from .brands_info import brands_info
-from fake_useragent import fake
 
 
 def get_links(url) -> list:
