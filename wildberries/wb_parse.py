@@ -5,7 +5,7 @@ from .brands_info import brands_info
 
 def get_links(url) -> list:
     """
-    return a list of links in one page
+    return a list of links in one single page
     """
     user_agent = fake_useragent.UserAgent.random
 
