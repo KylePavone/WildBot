@@ -7,7 +7,7 @@ def get_links(url) -> list:
     """
     return a list of links in one single page
     """
-    user_agent = fake_useragent.UserAgent.random
+    user_agent = fake_useragent.UserAgent().random
 
     header = {
     "user-agent": user_agent
