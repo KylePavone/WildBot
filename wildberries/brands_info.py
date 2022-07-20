@@ -3,8 +3,8 @@ import requests
 
 def brands_info() -> dict:
     """
-        :return: a dictionary that contains
-        brand name as 'key' and brand id as 'value'
+    returns a dictionary which contains information
+    about brand and brand_id as values of self-titled keys
     """
     url = "https://catalog.wb.ru/catalog/men_shoes/catalog?appType=1&couponsGeo=12,3,18,15,21&curr=rub&dest=-1029256,-102269,-2162196,-1257786&emp=0&kind=1&lang=ru&locale=ru&pricemarginCoeff=1.0&reg=0&regions=68,64,83,4,38,80,33,70,82,86,75,30,69,22,66,31,40,1,48,71&spp=0&subject=104;105;128;130;232;396;1382;1586"
     response = requests.get(url).json()

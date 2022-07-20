@@ -1,13 +1,21 @@
+import fake_useragent
 import requests
-from brands_info import brands_info
+from .brands_info import brands_info
+from fake_useragent import fake
 
 
 def get_links(url) -> list:
     """
-        :param url: string
-        :return: list of products links
+    return a list of links in one page
     """
-    response = requests.get(url).json()
+    user_agent = fake_useragent.UserAgent.random
+
+    header = {
+    "user-agent": user_agent
+    }
+
+    response = requests.get(url, headers=header).json()
+
     data = response["data"]
     products = data["products"]
 
@@ -34,7 +42,7 @@ def get_links(url) -> list:
 
 def pages(brand_input) -> list:
     """
-    :return: list of pages
+    returns a list of pages(lists of links per page)
     """
     try:
         result_brand = brands_info()[brand_input]
