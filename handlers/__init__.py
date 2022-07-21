@@ -1,2 +1,3 @@
-from handlers import common
-from handlers import wb
+from handlers import common_handler
+from handlers import wildberries_handler
+from handlers import lamoda_handler

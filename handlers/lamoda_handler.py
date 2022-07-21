@@ -10,12 +10,12 @@ class FSMLaParser(StatesGroup):
     brand = State()
 
 
-async def startings(message: types.Message):
+async def starting(message: types.Message):
     await FSMLaParser.brand.set()
     await message.reply("Введи название бренда кроссовок:")
 
 
-async def get_chosen(message: types.Message, state: FSMContext):
+async def content(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data["brand"] = message.text
     await message.reply("Подожди...")
@@ -29,5 +29,5 @@ async def get_chosen(message: types.Message, state: FSMContext):
 
 
 def register_la_handlers(dp: Dispatcher):
-    dp.register_message_handler(startings, commands=["lamoda"], state=None)
-    dp.register_message_handler(get_chosen, content_types=["text"], state=FSMLaParser.brand)
+    dp.register_message_handler(starting, commands=["lamoda"], state=None)
+    dp.register_message_handler(content, content_types=["text"], state=FSMLaParser.brand)
