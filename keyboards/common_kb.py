@@ -1,8 +1,8 @@
 from aiogram.types import KeyboardButton, ReplyKeyboardMarkup
 
 b_1 = KeyboardButton("/Menu")
-b_2 = KeyboardButton("/Help")
-b_3 = KeyboardButton("/About")
+b_2 = KeyboardButton("/wildberries")
+b_3 = KeyboardButton("/lamoda")
 
 common_keyboard = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
 

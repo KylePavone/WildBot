@@ -1,2 +1,2 @@
 from handlers import common
-from handlers import func
+from handlers import wb

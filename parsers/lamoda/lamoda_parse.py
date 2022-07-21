@@ -1,16 +1,15 @@
 import requests
 from bs4 import BeautifulSoup
-from time import sleep
 import fake_useragent
 
 
-def lamoda_parse():
+def lm_parse(brand):
     fake_agent = fake_useragent.UserAgent().random
     header = {
         "user-agent": fake_agent
     }
 
-    url = "https://www.lamoda.ru/c/2981/shoes-krossovk-kedy-muzhskie/?brands=1061&page=1"
+    url = f"https://www.lamoda.ru/c/2981/shoes-krossovk-kedy-muzhskie/?brands={brand}&page=1"
 
     response = requests.get(url, headers=header).text
 
@@ -29,12 +28,7 @@ def lamoda_parse():
         result_link = f"https://www.lamoda.ru/{link}"
         list_of_links.append(result_link)
 
-    number = int(input("Введите количество пар для отображения: "))
 
-    for i in range(number):
-        print(list_of_links[i])
-        sleep(0.7)
+    return list_of_links
 
-    return "Done"
-
-print(lamoda_parse())
+#print(lm_parse("1061"))
