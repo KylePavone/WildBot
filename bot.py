@@ -1,6 +1,7 @@
 from aiogram.utils import executor
 from bot_creation import dp
 
+
 async def on_startup(_):
     print("Bot ONLINE!")
 
