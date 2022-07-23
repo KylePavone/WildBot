@@ -3,7 +3,7 @@ from aiogram import Dispatcher
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import State, StatesGroup
 
-from bot_creation import bot
+from app.bot_creation import bot
 from parsers.wildberries.wb_parse import pages
 
 
