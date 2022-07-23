@@ -28,7 +28,4 @@ def lm_parse(brand):
         result_link = f"https://www.lamoda.ru/{link}"
         list_of_links.append(result_link)
 
-
     return list_of_links
-
-#print(lm_parse("1061"))

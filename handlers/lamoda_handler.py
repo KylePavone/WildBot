@@ -8,7 +8,7 @@ from parsers.lamoda.lamoda_parse import lm_parse
 
 class FSMLaParser(StatesGroup):
     brand = State()
-
+    number = State()
 
 async def starting(message: types.Message):
     await FSMLaParser.brand.set()
@@ -18,16 +18,26 @@ async def starting(message: types.Message):
 async def content(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data["brand"] = message.text
+    await message.reply("Введи количество ссылок: ")
+
+    await FSMLaParser.next()
+
+async def links_num(message: types.Message, state: FSMContext):
+    async with state.proxy() as data:
+        data["number"] = message.text
     await message.reply("Подожди...")
 
+
     async with state.proxy() as data:
-        for i in range(5):
+        for i in range(int(data["number"])):
             answer = lm_parse(data["brand"])[i]
             await bot.send_message(message.from_user.id, answer)
 
     await state.finish()
 
 
+
 def register_la_handlers(dp: Dispatcher):
     dp.register_message_handler(starting, commands=["lamoda"], state=None)
     dp.register_message_handler(content, content_types=["text"], state=FSMLaParser.brand)
+    dp.register_message_handler(links_num, content_types=["text"], state=FSMLaParser.number)

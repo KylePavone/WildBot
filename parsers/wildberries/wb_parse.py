@@ -1,6 +1,6 @@
 import fake_useragent
 import requests
-from .brands_info import brands_info
+from parsers.wildberries.brands_info import brands_info
 
 
 def get_links(url) -> list:
@@ -60,3 +60,5 @@ def pages(brand_input) -> list:
             pass
 
     return list_of_pages
+
+
