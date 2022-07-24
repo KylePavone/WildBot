@@ -1,7 +1,7 @@
 from aiogram import types
 from aiogram import Dispatcher
 
-from app.bot_creation import bot
+from bot_creation import bot
 from keyboards import common_keyboard
 
 

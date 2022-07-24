@@ -3,7 +3,7 @@ from aiogram import Dispatcher
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import State, StatesGroup
 
-from app.bot_creation import bot
+from bot_creation import bot
 from parsers.lamoda.lamoda_parse import lm_parse
 
 class FSMLaParser(StatesGroup):
@@ -25,13 +25,16 @@ async def content(message: types.Message, state: FSMContext):
 async def links_num(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data["number"] = message.text
-    await message.reply("Подожди...")
+    await message.reply("Ищу...")
 
 
     async with state.proxy() as data:
-        for i in range(int(data["number"])):
-            answer = lm_parse(data["brand"])[i]
-            await bot.send_message(message.from_user.id, answer)
+        try:
+            for i in range(int(data["number"])):
+                answer = lm_parse(data["brand"])[i]
+                await bot.send_message(message.from_user.id, answer)
+        except IndexError:
+            await bot.send_message(message.from_user.id, "А че то не находит)))")
 
     await state.finish()
 
